@@ -1,0 +1,23 @@
+#установка заисимостей
+install:
+	uv sync
+
+#запуск в режиме отладки
+dev:
+	uv run python manage.py runserver
+
+# скачиваем uv и запускаем команду установки зависимостей
+build:
+	./build.sh
+
+# запуск на Render
+render-start:
+	gunicorn task_manager.wsgi
+
+# миграции БД
+migrate:
+	uv run python manage.py migrate
+
+# сборка статики
+collectstatic:
+	uv run python manage.py collectstatic --noinput
