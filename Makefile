@@ -21,3 +21,6 @@ migrate:
 # сборка статики
 collectstatic:
 	uv run python manage.py collectstatic --noinput
+
+shell:
+	uv run python manage.py shell

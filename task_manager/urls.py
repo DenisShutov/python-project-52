@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from task_manager import views
 
+
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='index'),
+    path('users/', views.UsersListView.as_view(), name='users'),
     path('admin/', admin.site.urls),
 ]
