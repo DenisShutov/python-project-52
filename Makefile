@@ -23,4 +23,4 @@ collectstatic:
 	uv run python manage.py collectstatic --noinput
 
 shell:
-	uv run python manage.py shell
+	uv run python manage.py shell_plus
