@@ -22,10 +22,14 @@
                 <td>{{user.get_full_name}}</td>
                 <td>{{user.date_joined}}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-primary">Изменить</a>
-                    <a href="#" class="btn btn-sm btn-primary">Удалить</a>
+                    <a href="{% url 'users_update' id=user.id %}" class="btn btn-link btn-primary">Изменить</a>
+                    <form method="post" action="{% url 'users_delete' id=user.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link btn-primary">Удалить</button>
+                    </form>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}
