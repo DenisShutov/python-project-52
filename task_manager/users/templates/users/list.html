@@ -20,10 +20,10 @@
                 <td>{{user.id}}</td>
                 <td>{{user.username}}</td>
                 <td>{{user.get_full_name}}</td>
-                <td>{{user.date_joined}}</td>
+                <td>{{user.date_joined|date:"d.m.Y H:i"}}</td>
                 <td>
-                    <a href="{% url 'users_update' id=user.id %}" class="btn btn-link btn-primary">Изменить</a>
-                    <form method="post" action="{% url 'users_delete' id=user.id %}">
+                    <a href="{% url 'users_update' user.id %}" class="btn btn-link btn-primary">Изменить</a>
+                    <form method="post" action="{% url 'users_delete' user.id %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-link btn-primary">Удалить</button>
                     </form>

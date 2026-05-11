@@ -26,14 +26,14 @@ class UserCreateView(View):
         if form.is_valid():
             form.save()
             messages.success(request, 'Пользователь успешно зарегистрирован')
-            return redirect('index')
+            return redirect('login')
         return render(request, "users/create.html", {"form": form})
 
 
 class UserEditView(View):
     def get(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = User.objects.get(id=user_id)
+        user_id = kwargs.get('pk')
+        user = User.objects.get(pk=user_id)
         if user != request.user:
             messages.error(request, 'У вас нет прав для изменения')
             return redirect('users_list')
@@ -45,8 +45,8 @@ class UserEditView(View):
         )
     
     def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = get_object_or_404(User, id=user_id)
+        user_id = kwargs.get('pk')
+        user = get_object_or_404(User, pk=user_id)
         if user != request.user:
             messages.error(request, 'У вас нет прав для изменения')
             return redirect('users_list')
@@ -54,7 +54,7 @@ class UserEditView(View):
         if form.is_valid():
             form.save()
             messages.success(request, 'Пользователь успешно изменен')
-            return redirect('login')
+            return redirect('users_list')
         
         return render(
             request,
@@ -64,8 +64,8 @@ class UserEditView(View):
     
 class UserDeleteView(View):
     def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('id')
-        user = get_object_or_404(User, id=user_id)
+        user_id = kwargs.get('pk')
+        user = get_object_or_404(User, pk=user_id)
         if user != request.user:
             messages.error(request, 'У вас нет прав для изменения')
             return redirect('users_list')

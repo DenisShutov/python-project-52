@@ -18,7 +18,7 @@ class UserLoginView(View):
         form = UserLoginForm()
         return render (
             request,
-            'users/login.html',
+            'login.html',
             {'form': form}
         )
     
@@ -36,7 +36,7 @@ class UserLoginView(View):
         
         return render (
             request,
-            'users/login.html',
+            'login.html',
             {'form': form}
         )
 
