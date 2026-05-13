@@ -12,20 +12,29 @@
     <header>
         <nav class="py-2 bg-body-tertiary border-bottom"> 
             <div class="d-flex flex-wrap justify-content-start"> 
-                <ul class="nav me-auto"> 
+                <ul class="nav me-auto">
                     <li class="nav-item">
                         <a href="{% url 'index' %}" class="nav-link link-body-emphasis px-2 active" aria-current="page">Менеджер задач</a>
                     </li> 
                     <li class="nav-item">
                         <a href="{% url 'users_list' %}" class="nav-link link-body-emphasis px-2">Пользователи</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Вход</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a href="{% url 'users_create' %}" class="nav-link link-body-emphasis px-2">Регистрация</a>
                     </li>
-                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'statuses_list' %}" class="nav-link link-body-emphasis px-2">Статусы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link link-body-emphasis px-2">Выход</a>
+                        </li> 
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'users_create' %}" class="nav-link link-body-emphasis px-2">Регистрация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Вход</a>
+                        </li> 
+    
+                    {% endif %}
                  </ul>
             </div> 
         </nav>       

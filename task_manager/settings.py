@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'task_manager',
     'django_extensions',
     'task_manager.users',
+    'task_manager.statuses',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+LOGIN_URL = 'login'

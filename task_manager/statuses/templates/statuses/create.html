@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Создать статус</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_field form.name %}
+        
+        {% bootstrap_button "Создать" button_type="submit" %}
+    </form>
+</div>
+
+{% endblock %}
