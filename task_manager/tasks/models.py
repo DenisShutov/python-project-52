@@ -9,7 +9,10 @@ class Task(models.Model):
     name = models.CharField(
         max_length=200,
         unique=True,
-        verbose_name='Имя'
+        verbose_name='Имя',
+        error_messages={
+            'unique': 'Задача с таким именем уже существует',
+        }
     )
     description = models.TextField(
         blank=True,
