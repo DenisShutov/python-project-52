@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Задачи</h2>
+    <!-- <a href="{% url 'statuses_create' %}" class="btn btn-primary">Создать статус</a> -->
+    <table class="table table-striped"> 
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Статус</th>
+                <th>Автор</th>
+                <th>Исполнитель</th>
+                <th>Дата создания</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{task.id}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.status.name}}</td>
+                <td>{{task.author.username}}</td>
+                <td>{{task.executor.username}}</td>
+                <td>{{task.created_at|date:"d.m.Y H:i"}}</td>
+                <td>
+                    <!-- <a href="{% url 'statuses_update' status.id %}" class="btn btn-link btn-primary">Изменить</a>
+                    <a href="{% url 'statuses_delete' status.id %}" class="btn btn-link btn-primary">Удалить</a> -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
