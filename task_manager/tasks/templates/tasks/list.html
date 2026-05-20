@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-4">
     <h2>Задачи</h2>
-    <!-- <a href="{% url 'statuses_create' %}" class="btn btn-primary">Создать статус</a> -->
+    <a href="{% url 'tasks_create' %}" class="btn btn-primary">Создать задачу</a>
     <table class="table table-striped"> 
         <thead>
             <tr>
@@ -20,14 +20,14 @@
             {% for task in tasks %}
             <tr>
                 <td>{{task.id}}</td>
-                <td>{{task.name}}</td>
+                <td><a href="{% url 'tasks_view' task.id %}">{{task.name}}</a></td>
                 <td>{{task.status.name}}</td>
                 <td>{{task.author.username}}</td>
                 <td>{{task.executor.username}}</td>
                 <td>{{task.created_at|date:"d.m.Y H:i"}}</td>
                 <td>
-                    <!-- <a href="{% url 'statuses_update' status.id %}" class="btn btn-link btn-primary">Изменить</a>
-                    <a href="{% url 'statuses_delete' status.id %}" class="btn btn-link btn-primary">Удалить</a> -->
+                    <a href="{% url 'tasks_update' task.id %}" class="btn btn-link btn-primary">Изменить</a>
+                    <a href="{% url 'tasks_delete' task.id %}" class="btn btn-link btn-primary">Удалить</a>
                 </td>
             </tr>
             {% endfor %}

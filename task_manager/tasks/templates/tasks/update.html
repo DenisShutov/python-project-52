@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Изменить задачу</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_field form.name %}
+        {% bootstrap_field form.description %}
+        {% bootstrap_field form.status %}
+        {% bootstrap_field form.executor %}
+        
+        
+        {% bootstrap_button "Изменить" button_type="submit" %}
+    </form>
+</div>
+
+{% endblock %}
