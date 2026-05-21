@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class Status(models.Model):
+class Label(models.Model):
     name = models.CharField(
         max_length=100,
         unique=True,
         verbose_name='Имя',
         error_messages={
-            'unique': 'Статус с таким именем уже существует',
+            'unique': 'Метка с таким именем уже существует',
         }
     )
     created_at = models.DateTimeField(
