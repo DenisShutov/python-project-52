@@ -1,10 +1,28 @@
 [
 {
   "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$NjnRlTzrABy9JBYTuAd8iU$9vA6GnYhPVWLWlCJr+vbps8I6iw3XXpVLKOciJ8FTW4=",
+    "last_login": "2026-05-02T16:04:33.821Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "shtvdenis93@yandex.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-02T16:02:32.736Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$1200000$dwdj2Ivbn20y1QZiHM4pjA$rNSytVuDf/Vy+K0oX5v5uY0MKQRNZLziyj/+ux6jz10=",
-    "last_login": "2026-05-06T06:37:15.629Z",
+    "last_login": "2026-05-13T05:24:36.469Z",
     "is_superuser": false,
     "username": "dasdasd",
     "first_name": "qwdqwd",
@@ -49,6 +67,24 @@
     "is_staff": false,
     "is_active": true,
     "date_joined": "2026-05-11T05:15:16.529Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$F0TSxNiAJIsmrNTGjUdqJx$08HjD8/npXTx/RMIImcnFyVSz3dzLSsR9KzA67StuY8=",
+    "last_login": "2026-05-20T05:29:33.177Z",
+    "is_superuser": false,
+    "username": "Sash",
+    "first_name": "Саша",
+    "last_name": "Иванов",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-20T05:29:20.452Z",
     "groups": [],
     "user_permissions": []
   }

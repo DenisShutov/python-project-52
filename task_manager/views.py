@@ -9,7 +9,7 @@ def index(request):
         request,
         'index.html',
         context={
-            'message': 'Hello'
+            'message': 'Учебный проект: "Менеджер задач"'
         },
     )
 
