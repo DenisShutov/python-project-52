@@ -1,10 +1,13 @@
-from django.test import TestCase, Client
-from django.urls import reverse
 from django.contrib.auth import get_user_model
-from .models import Task, Label, Status
+from django.test import Client, TestCase
+from django.urls import reverse
+
+from .models import Label, Status, Task
+
 # Create your tests here.
 
 User = get_user_model()
+
 
 class TaskTest(TestCase):
     fixtures = ['tasks.json', 'statuses.json', 'users.json', 'labels.json']
@@ -63,7 +66,6 @@ class TaskTest(TestCase):
         response = self.client.get(list_url)
         self.assertContains(response, "Новая задача")
     
-
     def test_task_delete(self):
         status = Status.objects.first()
         task = Task.objects.create(

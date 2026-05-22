@@ -1,16 +1,16 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
-
 
 User = get_user_model()
+
 
 class UserTest(TestCase):
     fixtures = ["users.json"]
 
     def test_update_user(self):
         user = User.objects.get(pk=3)
-        #логиним без пароля
+        # логиним без пароля
         self.client.force_login(user)
 
         update_url = reverse("users_update", kwargs={"pk": user.pk})
@@ -48,7 +48,6 @@ class UserTest(TestCase):
 
         self.assertTrue(User.objects.filter(pk=4).exists())
     
-
     def test_user_creation(self):
         new_user = User.objects.create_user(
             first_name="Alice",

@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
-from task_manager.users.forms import UserCreateForm, UserUpdateForm
-from django.views import View
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+
+from task_manager.users.forms import UserCreateForm, UserUpdateForm
 
 
 class UsersListView(View):
@@ -15,6 +16,7 @@ class UsersListView(View):
                 'users': users
             }
         )
+
 
 class UserCreateView(View):
     def get(self, request, *args, **kwargs):
@@ -62,6 +64,7 @@ class UserEditView(View):
             {'form': form, 'user_id': user_id}
         )
     
+
 class UserDeleteView(View):
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')

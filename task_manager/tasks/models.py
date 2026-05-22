@@ -1,10 +1,12 @@
-from django.db import models
-from task_manager.statuses.models import Status
-from task_manager.labels.models import Label
 from django.contrib.auth import get_user_model
+from django.db import models
+
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
 
 # Create your models here.
 User = get_user_model()
+
 
 class Task(models.Model):
     name = models.CharField(
@@ -24,7 +26,7 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         verbose_name='Статус'
     )
-    executor =  models.ForeignKey(
+    executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         related_name='executor_tasks',

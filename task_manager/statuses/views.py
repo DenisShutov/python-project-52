@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from task_manager.statuses.models import Status
-from task_manager.statuses.forms import StatusForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+
+from task_manager.statuses.forms import StatusForm
+from task_manager.statuses.models import Status
+
 
 # Create your views here.
 class StatusListView(LoginRequiredMixin, View):
@@ -16,6 +18,7 @@ class StatusListView(LoginRequiredMixin, View):
                 'statuses': statuses
             }
         )
+
 
 class StatusCreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -59,6 +62,7 @@ class StatusEditView(LoginRequiredMixin, View):
             {'form': form, 'status_id': status_id}
         )
     
+
 class StatusDeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get('pk')

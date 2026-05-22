@@ -1,10 +1,13 @@
-from django.test import TestCase, Client
-from django.urls import reverse
 from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
+from django.urls import reverse
+
 from .models import Label
+
 # Create your tests here.
 
 User = get_user_model()
+
 
 class LabelTest(TestCase):
     fixtures = ['labels.json', 'tasks.json', 'statuses.json', 'users.json',]

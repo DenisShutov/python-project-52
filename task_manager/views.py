@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
-from task_manager.users.forms import UserLoginForm
-from django.views import View
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect, render
+from django.views import View
+
+from task_manager.users.forms import UserLoginForm
+
 
 def index(request):
     return render(
@@ -13,10 +15,11 @@ def index(request):
         },
     )
 
+
 class UserLoginView(View):
     def get(self, request):
         form = UserLoginForm()
-        return render (
+        return render(
             request,
             'login.html',
             {'form': form}
@@ -34,11 +37,12 @@ class UserLoginView(View):
                 messages.success(request, 'Вы залогинены')
                 return redirect('index')
         
-        return render (
+        return render(
             request,
             'login.html',
             {'form': form}
         )
+
 
 class UserLogoutView(View):
     def get(self, request):

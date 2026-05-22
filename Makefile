@@ -24,3 +24,9 @@ collectstatic:
 
 shell:
 	uv run python manage.py shell_plus
+
+lint:
+	uv run ruff check task_manager
+
+lint-fix:
+	uv run ruff check --fix task_manager

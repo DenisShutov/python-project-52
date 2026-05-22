@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Label(models.Model):
     name = models.CharField(
@@ -15,4 +16,4 @@ class Label(models.Model):
         verbose_name='Дата создания')
 
     def __str__(self):
-            return self.name
+        return self.name

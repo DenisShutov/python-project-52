@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from task_manager.labels.models import Label
-from task_manager.labels.forms import LabelForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+
+from task_manager.labels.forms import LabelForm
+from task_manager.labels.models import Label
+
 
 # Create your views here.
 class LabelListView(LoginRequiredMixin, View):
@@ -17,6 +19,7 @@ class LabelListView(LoginRequiredMixin, View):
             }
         )
 
+
 class LabelCreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = LabelForm()
@@ -29,6 +32,7 @@ class LabelCreateView(LoginRequiredMixin, View):
             messages.success(request, 'Метка успешно создана')
             return redirect('labels_list')
         return render(request, "labels/create.html", {"form": form})
+
 
 class LabelEditView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -57,6 +61,7 @@ class LabelEditView(LoginRequiredMixin, View):
             'labels/update.html',
             {'form': form, 'label_id': label_id}
         )
+
 
 class LabelDeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):

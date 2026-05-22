@@ -1,10 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import View
-from task_manager.tasks.models import Task
-from task_manager.tasks.forms import TaskForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+
+from task_manager.tasks.forms import TaskForm
+from task_manager.tasks.models import Task
+
 # Create your views here.
+
 
 class TaskListView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -16,6 +19,7 @@ class TaskListView(LoginRequiredMixin, View):
                 'tasks': tasks
             }
         )
+
 
 class TaskView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -29,13 +33,14 @@ class TaskView(LoginRequiredMixin, View):
             }
         )
 
+
 class TaskCreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = TaskForm()
         return render(request, "tasks/create.html", {"form": form})
     
     def post(self, request, *args, **kwargs):
-        form =TaskForm(request.POST)
+        form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save(commit=False)  
             task.author = request.user 
@@ -44,6 +49,7 @@ class TaskCreateView(LoginRequiredMixin, View):
             return redirect('tasks_list')
         return render(request, "tasks/create.html", {"form": form})
     
+
 class TaskEditView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
@@ -71,6 +77,7 @@ class TaskEditView(LoginRequiredMixin, View):
             'tasks/update.html',
             {'form': form, 'task_id': task_id}
         )
+
 
 class TaskDeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
