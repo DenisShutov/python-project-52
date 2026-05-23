@@ -2,23 +2,25 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
+from django_filters.views import FilterView
 
+from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 
 # Create your views here.
 
 
-class TaskListView(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        tasks = Task.objects.all()
-        return render(
-            request,
-            'tasks/list.html',
-            context={
-                'tasks': tasks
-            }
-        )
+class TaskListView(LoginRequiredMixin, FilterView):
+    model = Task
+    template_name = 'tasks/list.html'
+    context_object_name = 'tasks'
+    filterset_class = TaskFilter
+    
+    def get_filterset_kwargs(self, filterset_class):
+        kwargs = super().get_filterset_kwargs(filterset_class)
+        kwargs['request'] = self.request
+        return kwargs
 
 
 class TaskView(LoginRequiredMixin, View):
