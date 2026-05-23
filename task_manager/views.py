@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -49,3 +50,10 @@ class UserLogoutView(View):
         logout(request)
         messages.info(request, 'Вы разлогинены')
         return redirect('index')
+
+
+def test_error(request):
+    """Trigger a test error for Rollbar."""
+    a = None
+    a.hello()  # This will raise AttributeError
+    return HttpResponse("This will not be reached")
