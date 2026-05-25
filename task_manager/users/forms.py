@@ -19,17 +19,19 @@ class UserCreateForm(UserCreationForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].error_messages = {'unique': 'Уже существует'}
+        self.fields['username'].error_messages = {
+            'unique': 'Пользователь с таким именем уже существует'
+            }
         
         self.fields['password1'].label = "Пароль"
         self.fields['password1'].widget.attrs.update({'class': 'form-control'})
         self.fields['password1'].help_text = "Ваш пароль должен содержать "
-        "минимум 3 символа."
+        "как минимум 3 символа."
            
         self.fields['password2'].label = "Подтверждение пароля"
         self.fields['password2'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password2'].help_text = "Введите пароль ещё "
-        "раз для проверки."
+        self.fields['password2'].help_text = "Для подтверждения введите, "
+        "пожалуйста, пароль ещё раз."
     
 
 class UserUpdateForm(forms.ModelForm):
