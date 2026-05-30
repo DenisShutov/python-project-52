@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.deletion import ProtectedError
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
-from django.db.models.deletion import ProtectedError
 
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
@@ -80,7 +80,7 @@ class StatusDeleteView(LoginRequiredMixin, View):
         
         try:
             status.delete()
-            messages.success(request, 'Статус успешно удалён')
+            messages.success(request, 'Статус успешно удален')
         except ProtectedError:
             messages.error(request, 'Невозможно удалить статус')
         
