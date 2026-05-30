@@ -66,6 +66,15 @@ class UserEditView(View):
     
 
 class UserDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = User.objects.get(pk=user_id)
+        return render(
+            request,
+            'users/delete.html',
+            {'user': user}
+        )
+    
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = get_object_or_404(User, pk=user_id)
