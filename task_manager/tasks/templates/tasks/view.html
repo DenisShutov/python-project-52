@@ -28,6 +28,16 @@
                 <div class="col-8">{{ task.created_at }}</div>
             </div>
             
+            <div class="row mb-2">
+                <div class="col-4 fw-bold">Метки:</div>
+                <div class="col-8">
+                    {% for label in task.labels.all %}
+                        {{ label.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        Нет меток
+                    {% endfor %}
+                </div>
+            </div>
             
             <a href="{% url 'tasks_update' task.id %}" class="btn btn-link btn-primary">Изменить</a>
             <p><a href="{% url 'tasks_delete' task.id %}" class="btn btn-link btn-primary">Удалить</a></p>
