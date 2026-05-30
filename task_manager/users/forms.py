@@ -34,7 +34,7 @@ class UserCreateForm(UserCreationForm):
         "пожалуйста, пароль ещё раз."
     
 
-class UserUpdateForm(forms.ModelForm):
+class UserUpdateForm(UserCreationForm):
     first_name = forms.CharField(label="Имя")
     last_name = forms.CharField(label="Фамилия")
     username = forms.CharField(
