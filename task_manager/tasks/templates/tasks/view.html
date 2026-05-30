@@ -27,14 +27,14 @@
                 <div class="col-4">Дата создания</div>
                 <div class="col-8">{{ task.created_at }}</div>
             </div>
-            
+
             <div class="row mb-2">
                 <div class="col-4 fw-bold">Метки:</div>
                 <div class="col-8">
                     {% for label in task.labels.all %}
-                        {{ label.name }}{% if not forloop.last %}, {% endif %}
+                        <div>{{ label.name }}</div>
                     {% empty %}
-                        Нет меток
+                        <div>Нет меток</div>
                     {% endfor %}
                 </div>
             </div>
