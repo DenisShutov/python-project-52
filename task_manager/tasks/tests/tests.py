@@ -17,7 +17,7 @@ class TaskTest(TestCase):
         # берём пользователя из фикстуры
         self.user = User.objects.first()
         self.client.force_login(self.user)
-    
+
     def test_task_list_read(self):
         url = reverse('tasks_list')
         response = self.client.get(url)
