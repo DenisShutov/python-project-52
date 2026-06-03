@@ -30,3 +30,14 @@ lint:
 
 lint-fix:
 	uv run ruff check --fix task_manager
+
+test:
+	uv run manage.py test
+
+test-coverage:
+	uv run coverage run manage.py test
+	uv run coverage xml
+
+check:
+	uv run ruff check task_manager
+	uv run python manage.py test

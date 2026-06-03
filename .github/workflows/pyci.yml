@@ -20,7 +20,16 @@ jobs:
           pip install uv
           make install
 
-      - name: Run linter
+      - name: Run linter and test
         run: |
-          make lint
+          make check
+      - name: Run test coverage
+        run: |
+          make test-coverage
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
       
